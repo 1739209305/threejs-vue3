@@ -4,14 +4,16 @@
       <menu_slider></menu_slider>
     </div>
     <div class="content">
-      <keep-alive>
-        <router-view />
-      </keep-alive>
+      <router-view v-slot="{ Component }">
+        <keep-alive>
+          <component :is="Component" :key="Component" />
+        </keep-alive>
+      </router-view>
     </div>
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import menu_slider from './layout/menu_slider.vue'
 </script>
 

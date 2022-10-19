@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, Ref } from 'vue'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
@@ -16,7 +16,7 @@ let scene: THREE.Scene,
   renderer: THREE.WebGLRenderer,
   controls: OrbitControls
 // gui = new dat.GUI()
-const furniture_show: any = ref(null)
+const furniture_show: Ref = ref(null)
 
 const init = () => {
   scene = new THREE.Scene()

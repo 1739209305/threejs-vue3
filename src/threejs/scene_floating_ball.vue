@@ -6,8 +6,8 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
-import dat from 'dat.gui'
-import { ref, onMounted } from 'vue'
+// import dat from 'dat.gui'
+import { ref, onMounted, Ref } from 'vue'
 
 let scene: THREE.Scene,
   camera: THREE.PerspectiveCamera,
@@ -15,13 +15,15 @@ let scene: THREE.Scene,
   controls: OrbitControls,
   cloudTexture: THREE.Texture,
   houseTexture: THREE.Texture,
-  gui: unknown,
+  // gui: any,
   cube: THREE.Mesh
-const scene_floating_ball: any = ref(null)
-gui = new dat.GUI()
+const scene_floating_ball: Ref = ref(null)
 
 const init = () => {
+  // gui = new dat.GUI()
+  // 设置场景
   scene = new THREE.Scene()
+  // 初始化透视相机
   camera = new THREE.PerspectiveCamera(
     45,
     scene_floating_ball.value.clientWidth /
@@ -29,10 +31,14 @@ const init = () => {
     0.1,
     100000
   )
+  // 设置相机位置
   camera.position.set(-100, 100, 600)
+  // 更新像素比
   camera.updateProjectionMatrix()
+  // 添加相机到场景中
   scene.add(camera)
 
+  // 创建纹理
   let textureLoad: THREE.TextureLoader = new THREE.TextureLoader()
   cloudTexture = textureLoad.load('image/cloud.jpg')
   cloudTexture.mapping = THREE.EquirectangularReflectionMapping
@@ -48,14 +54,11 @@ const init = () => {
     scene.add(cube)
 
     scene.background = houseTexture
-
-    render()
   })
 
   renderer = new THREE.WebGLRenderer({
     antialias: true
   })
-  console.log(scene_floating_ball.value.clientHeight)
   renderer.setSize(
     scene_floating_ball.value.clientWidth,
     scene_floating_ball.value.clientHeight
@@ -69,30 +72,28 @@ const init = () => {
 
   scene_floating_ball.value.appendChild(renderer.domElement)
 
-  window.addEventListener('resize', () => {
-    resize()
-  })
+  render()
 }
 
 const guiEvent = () => {
-  const param = {
-    house: function () {
-      scene.background = houseTexture
-      if (!Array.isArray(cube.material)) {
-        cube.material.envMap = houseTexture
-        cube.material.needsUpdate = true
-      }
-    },
-    cloud: function () {
-      scene.background = cloudTexture
-      if (!Array.isArray(cube.material)) {
-        cube.material.envMap = cloudTexture
-        cube.material.needsUpdate = true
-      }
-    }
-  }
-  gui.add(param, 'cloud')
-  gui.add(param, 'house')
+  // const param = {
+  //   house: function () {
+  //     scene.background = houseTexture
+  //     if (!Array.isArray(cube.material)) {
+  //       ;(cube.material as any).envMap = houseTexture
+  //       cube.material.needsUpdate = true
+  //     }
+  //   },
+  //   cloud: function () {
+  //     scene.background = cloudTexture
+  //     if (!Array.isArray(cube.material)) {
+  //       ;(cube.material as any).envMap = cloudTexture
+  //       cube.material.needsUpdate = true
+  //     }
+  //   }
+  // }
+  // gui.add(param, 'house')
+  // gui.add(param, 'cloud')
 }
 
 const render = () => {

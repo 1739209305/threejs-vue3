@@ -4,13 +4,15 @@
 
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, Ref } from 'vue'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 // hdr加载需要RGBELoader
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
 let scene: THREE.Scene,
   camera: THREE.PerspectiveCamera,
   renderer: THREE.WebGLRenderer
+
+const vrHouseViewing: Ref = ref(null)
 
 const init = () => {
   // 创建场景
@@ -64,7 +66,6 @@ const render = () => {
   requestAnimationFrame(render)
 }
 
-const vrHouseViewing: any = ref(null)
 onMounted(() => {
   init()
   vrHouseViewing.value.appendChild(renderer.domElement)

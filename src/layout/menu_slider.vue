@@ -18,7 +18,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useRouter } from 'vue-router'
 const menu_list = [
   {
@@ -48,7 +48,7 @@ const menu_list = [
   }
 ]
 let router = useRouter()
-const toPath = (path) => {
+const toPath = (path: string) => {
   router.push({ path: path })
 }
 </script>

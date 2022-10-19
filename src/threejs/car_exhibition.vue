@@ -13,7 +13,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, Ref } from 'vue'
 import { Object3D } from 'three'
 
 let scene: THREE.Scene,
@@ -22,9 +22,9 @@ let scene: THREE.Scene,
   controls: OrbitControls,
   dracoLoader,
   loader
-let wheels: Object3D[] = []
+let wheels: any[] = []
 // 获取dom
-const car_exhibition: any = ref(null)
+const car_exhibition: Ref = ref(null)
 
 // 材质
 const bodyMaterial = new THREE.MeshPhysicalMaterial({
@@ -73,12 +73,13 @@ const init = () => {
   loader.setDRACOLoader(dracoLoader)
   loader.load('./glb/car.glb', function (gltf) {
     const carModel: Object3D = gltf.scene.children[0]
-    carModel.getObjectByName('body').material = bodyMaterial
-    carModel.getObjectByName('trim').material = bodyMaterial
-    carModel.getObjectByName('glass').material = glassMaterial
-    carModel.getObjectByName('yellow_trim').material = yellowTrimMaterial
 
-    console.log(carModel.getObjectByName('wheel_fl'))
+    ;(carModel.getObjectByName('body') as any).material = bodyMaterial
+    ;(carModel.getObjectByName('trim') as any).material = bodyMaterial
+    ;(carModel.getObjectByName('glass') as any).material = glassMaterial
+    ;(carModel.getObjectByName('yellow_trim') as any).material =
+      yellowTrimMaterial
+
     wheels.push(
       carModel.getObjectByName('wheel_fl'),
       carModel.getObjectByName('wheel_fr'),
@@ -92,7 +93,6 @@ const init = () => {
   renderer = new THREE.WebGLRenderer({
     antialias: true
   })
-  console.log(car_exhibition.value.clientWidth)
   renderer.setSize(
     car_exhibition.value.clientWidth,
     car_exhibition.value.clientHeight

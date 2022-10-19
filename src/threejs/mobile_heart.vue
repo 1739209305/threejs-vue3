@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, Ref } from 'vue'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { MeshBasicMaterial } from 'three'
 
@@ -14,7 +14,7 @@ let scene: THREE.Scene,
   controls: OrbitControls
 let theta = 0
 const radius = 100
-const heart: any = ref(null)
+const heart: Ref = ref(null)
 
 const init = () => {
   scene = new THREE.Scene()
