@@ -13,8 +13,8 @@ let scene: THREE.Scene,
   camera: THREE.PerspectiveCamera,
   renderer: THREE.WebGLRenderer,
   controls: OrbitControls,
-  cloudTexture: THREE.Texture,
-  houseTexture: THREE.Texture,
+  // cloudTexture: THREE.Texture,
+  // houseTexture: THREE.Texture,
   // gui: any,
   cube: THREE.Mesh
 const scene_floating_ball: Ref = ref(null)
@@ -39,21 +39,20 @@ const init = () => {
   scene.add(camera)
 
   // 创建纹理
-  let textureLoad: THREE.TextureLoader = new THREE.TextureLoader()
-  cloudTexture = textureLoad.load('image/cloud.jpg')
-  cloudTexture.mapping = THREE.EquirectangularReflectionMapping
+  // let textureLoad: THREE.TextureLoader = new THREE.TextureLoader()
+  // cloudTexture = textureLoad.load('image/cloud.jpg')
+  // cloudTexture.mapping = THREE.EquirectangularReflectionMapping
 
   const rgbeLoader = new RGBELoader()
-  rgbeLoader.load('./hdr/vr_house.hdr', (texture) => {
+  rgbeLoader.load('./hdr/env.hdr', (texture) => {
     texture.mapping = THREE.EquirectangularReflectionMapping
-    houseTexture = texture
 
-    const geometry = new THREE.SphereGeometry(130, 1000, 1000)
-    const material = new THREE.MeshBasicMaterial({ envMap: houseTexture })
+    const geometry = new THREE.IcosahedronGeometry(100, 5)
+    const material = new THREE.MeshBasicMaterial({ envMap: texture })
     cube = new THREE.Mesh(geometry, material)
     scene.add(cube)
 
-    scene.background = houseTexture
+    scene.background = texture
   })
 
   renderer = new THREE.WebGLRenderer({

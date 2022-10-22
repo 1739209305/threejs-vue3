@@ -27,11 +27,6 @@ const menu_list = [
     path: '/car_exhibition'
   },
   {
-    img: 'menu/scene_floating_ball.png',
-    label: 'Environmental sphere',
-    path: '/scene_floating_ball'
-  },
-  {
     img: 'menu/furniture_show.png',
     label: 'Furniture Show',
     path: '/furniture_show'
@@ -40,6 +35,11 @@ const menu_list = [
     img: 'menu/vr_house_viewing.png',
     label: 'VR House',
     path: '/vr_house_viewing'
+  },
+  {
+    img: 'menu/scene_floating_ball.png',
+    label: 'Environmental sphere',
+    path: '/scene_floating_ball'
   },
   {
     img: 'menu/mobile_heart.png',

@@ -31,10 +31,10 @@ const init = () => {
   scene.add(camera)
 
   // 创建几何体和材质
-  const geometry = new THREE.SphereGeometry(50, 100, 100)
+  const geometry = new THREE.SphereGeometry(50, 50, 50)
   // 设置纹理 加载hdr ，用RGBELoader
   const textureLoader = new RGBELoader()
-  textureLoader.load('./hdr/vr_house_2.hdr', (texture) => {
+  textureLoader.load('./hdr/house.hdr', (texture) => {
     const material = new THREE.MeshBasicMaterial({ map: texture })
     const mesh = new THREE.Mesh(geometry, material)
 
