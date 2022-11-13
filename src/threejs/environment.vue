@@ -44,7 +44,7 @@ const init = () => {
   // cloudTexture.mapping = THREE.EquirectangularReflectionMapping
 
   const rgbeLoader = new RGBELoader()
-  rgbeLoader.load('./hdr/brown_photostudio_04_1k.hdr', (texture) => {
+  rgbeLoader.load('./hdr/brown_photostudio_03_1k.hdr', (texture) => {
     texture.mapping = THREE.EquirectangularReflectionMapping
 
     const geometry = new THREE.IcosahedronGeometry(100, 5)
