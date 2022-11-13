@@ -1,66 +1,66 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes: Array<any> = [
-  // {
-  //   path: '/:pathMatch(.*)',
-  //   redirect: '/car_exhibition'
-  // },
+  {
+    path: '/:pathMatch(.*)',
+    redirect: '/layout/car'
+  },
   {
     path: '/layout',
     name: 'layout',
     component: () => import('../layout/index.vue'),
     children: [
       {
-        path: 'furniture_show',
-        name: 'layout_furniture_show',
-        component: () => import('../threejs/furniture_show.vue')
+        path: 'chair',
+        name: 'layout_chair',
+        component: () => import('../threejs/chair.vue')
       },
       {
-        path: 'car_exhibition',
-        name: 'layout_car_exhibition',
-        component: () => import('../threejs/car_exhibition.vue')
+        path: 'car',
+        name: 'layout_car',
+        component: () => import('../threejs/car.vue')
       },
       {
-        path: 'mobile_heart',
-        name: 'layout_mobile_heart',
-        component: () => import('../threejs/mobile_heart.vue')
+        path: 'heart',
+        name: 'layout_heart',
+        component: () => import('../threejs/heart.vue')
       },
       {
-        path: 'scene_floating_ball',
-        name: 'layout_scene_floating_ball',
-        component: () => import('../threejs/scene_floating_ball.vue')
+        path: 'environment',
+        name: 'layout_environment',
+        component: () => import('../threejs/environment.vue')
       },
       {
-        path: 'vr_house_viewing',
-        name: 'layout_vr_house_viewing',
-        component: () => import('../threejs/vr_house_viewing.vue')
+        path: 'room',
+        name: 'layout_room',
+        component: () => import('../threejs/room.vue')
       }
     ]
   },
   {
-    path: '/furniture_show',
-    name: 'furniture_show',
-    component: () => import('../threejs/furniture_show.vue')
+    path: '/chair',
+    name: 'chair',
+    component: () => import('../threejs/chair.vue')
   },
   {
-    path: '/car_exhibition',
-    name: 'car_exhibition',
-    component: () => import('../threejs/car_exhibition.vue')
+    path: '/car',
+    name: 'car',
+    component: () => import('../threejs/car.vue')
   },
   {
-    path: '/mobile_heart',
-    name: 'mobile_heart',
-    component: () => import('../threejs/mobile_heart.vue')
+    path: '/heart',
+    name: 'heart',
+    component: () => import('../threejs/heart.vue')
   },
   {
-    path: '/scene_floating_ball',
-    name: 'scene_floating_ball',
-    component: () => import('../threejs/scene_floating_ball.vue')
+    path: '/environment',
+    name: 'environment',
+    component: () => import('../threejs/environment.vue')
   },
   {
-    path: '/vr_house_viewing',
-    name: 'vr_house_viewing',
-    component: () => import('../threejs/vr_house_viewing.vue')
+    path: '/room',
+    name: 'room',
+    component: () => import('../threejs/room.vue')
   }
 ]
 
