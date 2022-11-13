@@ -1,20 +1,15 @@
 <template>
   <div class="app">
-    <div class="menu">
-      <menu_slider></menu_slider>
-    </div>
-    <div class="content">
-      <router-view v-slot="{ Component }">
-        <keep-alive>
-          <component :is="Component" :key="Component" />
-        </keep-alive>
-      </router-view>
-    </div>
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" :key="Component" />
+      </keep-alive>
+    </router-view>
   </div>
 </template>
 
 <script lang="ts" setup>
-import menu_slider from './layout/menu_slider.vue'
+// import menu_slider from './layout/menu_slider.vue'
 </script>
 
 <style>
@@ -27,11 +22,25 @@ import menu_slider from './layout/menu_slider.vue'
   height: 100vh;
   display: flex;
 }
-.menu {
-  width: 20%;
-}
 .content {
-  width: 80%;
+  width: 100%;
   position: relative;
+}
+::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px gray;
+  background: grey;
+}
+::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+  background: #ededed;
 }
 </style>

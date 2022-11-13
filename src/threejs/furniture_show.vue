@@ -35,7 +35,7 @@ const init = () => {
   dracoLoader.setDecoderPath('./draco/gltf/')
   gltfLoader.setDRACOLoader(dracoLoader)
   gltfLoader.setPath('./gltf/')
-  gltfLoader.load('ArmChair_01_4k.gltf', function (gltf) {
+  gltfLoader.load('ArmChair_01_1k.gltf', function (gltf) {
     const model = gltf.scene.children[0]
     model.scale.x = 0.7
     model.scale.y = 0.7

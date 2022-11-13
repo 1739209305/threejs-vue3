@@ -25,16 +25,16 @@ const init = () => {
     1000
   )
   // 设置相机的位置
-  camera.position.z = 0.1
+  camera.position.z = 0.5
   camera.updateProjectionMatrix()
   // 把相机添加到场景中
   scene.add(camera)
 
   // 创建几何体和材质
-  const geometry = new THREE.SphereGeometry(50, 50, 50)
+  const geometry = new THREE.SphereGeometry(100, 100, 100)
   // 设置纹理 加载hdr ，用RGBELoader
   const textureLoader = new RGBELoader()
-  textureLoader.load('./hdr/house.hdr', (texture) => {
+  textureLoader.load('./hdr/brown_photostudio_05_2k.hdr', (texture) => {
     const material = new THREE.MeshBasicMaterial({ map: texture })
     const mesh = new THREE.Mesh(geometry, material)
 

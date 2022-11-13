@@ -32,7 +32,7 @@ const init = () => {
     100000
   )
   // 设置相机位置
-  camera.position.set(-100, 100, 600)
+  camera.position.set(-600, 500, 600)
   // 更新像素比
   camera.updateProjectionMatrix()
   // 添加相机到场景中
@@ -44,7 +44,7 @@ const init = () => {
   // cloudTexture.mapping = THREE.EquirectangularReflectionMapping
 
   const rgbeLoader = new RGBELoader()
-  rgbeLoader.load('./hdr/env.hdr', (texture) => {
+  rgbeLoader.load('./hdr/brown_photostudio_04_1k.hdr', (texture) => {
     texture.mapping = THREE.EquirectangularReflectionMapping
 
     const geometry = new THREE.IcosahedronGeometry(100, 5)
